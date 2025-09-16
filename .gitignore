@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.env
+storage/uploads/
+storage/reports/
+storage/metadata.db
+*.sqlite3
+*.log
+*.egg-info/
