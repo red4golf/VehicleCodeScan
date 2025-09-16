@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vehiclecodescan"
+version = "0.1.0"
+description = "Vehicle code scanner reporting service"
+authors = [{name = "VehicleCodeScan"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "Flask>=3.0",
+    "python-dotenv>=1.0",
+    "reportlab>=4.0",
+    "Pillow>=10.0"
+]
+
+[project.optional-dependencies]
+development = [
+    "pytest>=7.0"
+]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["vehiclecodescan*"]

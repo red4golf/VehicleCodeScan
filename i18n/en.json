@@ -1,0 +1,69 @@
+{
+  "upload": {
+    "title": "Vehicle Diagnostic Report Uploader",
+    "heading": "Create a Vehicle Diagnostic Report",
+    "instructions": "Upload the Foxwell NT650 Elite export and optional vehicle photos to generate a customer-ready PDF report.",
+    "labels": {
+      "scanner_file": "Scanner export file",
+      "images": "Vehicle photos (JPG)",
+      "email": "Recipient email",
+      "language": "Report language",
+      "vin": "Vehicle VIN",
+      "mileage": "Mileage",
+      "notes": "Technician notes",
+      "submit": "Generate report"
+    },
+    "errors": {
+      "missing_scanner": "Scanner file is required.",
+      "missing_email": "Email address is required.",
+      "invalid_images": "Only JPG images are supported ({filenames}).",
+      "parse_failed": "Unable to parse scanner file: {error}"
+    },
+    "success": {
+      "title": "Report generated",
+      "message": "Report {report_id} created successfully.",
+      "email_sent": "Report emailed to {email}.",
+      "email_not_sent": "Email delivery skipped — check SMTP configuration.",
+      "codes_heading": "Detected diagnostic codes"
+    }
+  },
+  "report": {
+    "title": "Vehicle Diagnostic Report",
+    "generated_on": "Generated on {timestamp}",
+    "vehicle": {
+      "heading": "Vehicle information",
+      "vin": "VIN",
+      "mileage": "Mileage",
+      "notes": "Notes"
+    },
+    "diagnostics": {
+      "heading": "Diagnostic results",
+      "code": "Code",
+      "status": "Status",
+      "severity": "Severity",
+      "description": "Description",
+      "recommendation": "Recommendation",
+      "no_codes": "No diagnostic trouble codes were detected."
+    },
+    "images": {
+      "heading": "Vehicle photos"
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "body": "This report is provided for informational purposes only. Seek assistance from a certified technician for required repairs."
+    },
+    "unknown_code_description": "No database entry for code {code}.",
+    "unknown_code_advice": "Refer to a qualified technician for further diagnosis."
+  },
+  "severity": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "critical": "Critical",
+    "unknown": "Unknown"
+  },
+  "email": {
+    "subject": "Vehicle diagnostic report for {vin}",
+    "body": "Attached is the diagnostic report for your vehicle.\n\nReport ID: {report_id}\nDetected codes: {codes}"
+  }
+}
