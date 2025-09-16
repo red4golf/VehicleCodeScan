@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="{{ language }}">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ translate('upload.title') }}</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; background: #f9fafc; color: #222; }
+      h1 { color: #0c2d57; }
+      form { background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+      label { display: block; margin-top: 1rem; font-weight: bold; }
+      input[type="text"], input[type="email"], input[type="file"], textarea, select {
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 0.3rem;
+        border: 1px solid #ccd6e0;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      textarea { min-height: 120px; }
+      button { margin-top: 1.5rem; background: #0c2d57; color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 4px; cursor: pointer; }
+      button:hover { background: #093060; }
+      .errors { background: #ffe4e6; color: #b91c1c; border: 1px solid #fecaca; padding: 1rem; border-radius: 6px; }
+      .summary { background: #ecfdf5; border: 1px solid #a7f3d0; padding: 1.5rem; border-radius: 8px; }
+      table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+      th, td { border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; }
+      th { background: #0c2d57; color: #fff; }
+    </style>
+  </head>
+  <body>
+    <h1>{{ translate('upload.heading') }}</h1>
+    <p>{{ translate('upload.instructions') }}</p>
+
+    {% if errors %}
+      <div class="errors">
+        <ul>
+          {% for error in errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+      <label for="scanner_file">{{ translate('upload.labels.scanner_file') }}</label>
+      <input id="scanner_file" name="scanner_file" type="file" required>
+
+      <label for="images">{{ translate('upload.labels.images') }}</label>
+      <input id="images" name="images" type="file" accept="image/jpeg" multiple>
+
+      <label for="email">{{ translate('upload.labels.email') }}</label>
+      <input id="email" name="email" type="email" value="{{ request.form.get('email', '') }}" required>
+
+      <label for="language">{{ translate('upload.labels.language') }}</label>
+      <select id="language" name="language">
+        {% for lang in languages %}
+          <option value="{{ lang }}" {% if lang == language %}selected{% endif %}>{{ lang|upper }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="vin">{{ translate('upload.labels.vin') }}</label>
+      <input id="vin" name="vin" type="text" value="{{ request.form.get('vin', '') }}">
+
+      <label for="mileage">{{ translate('upload.labels.mileage') }}</label>
+      <input id="mileage" name="mileage" type="text" value="{{ request.form.get('mileage', '') }}">
+
+      <label for="notes">{{ translate('upload.labels.notes') }}</label>
+      <textarea id="notes" name="notes">{{ request.form.get('notes', '') }}</textarea>
+
+      <button type="submit">{{ translate('upload.labels.submit') }}</button>
+    </form>
+
+    {% if summary %}
+      <div class="summary">
+        <h2>{{ translate('upload.success.title') }}</h2>
+        <p>{{ translate('upload.success.message', report_id=summary.report_id) }}</p>
+        {% if summary.email_sent %}
+          <p>{{ translate('upload.success.email_sent', email=summary.email) }}</p>
+        {% else %}
+          <p>{{ translate('upload.success.email_not_sent') }}</p>
+        {% endif %}
+        <p><strong>ID:</strong> {{ summary.report_id }}</p>
+        <p><strong>{{ translate('upload.labels.language') }}:</strong> {{ language|upper }}</p>
+        <h3>{{ translate('upload.success.codes_heading') }}</h3>
+        {% if summary.codes %}
+          <table>
+            <thead>
+              <tr>
+                <th>{{ translate('report.diagnostics.code') }}</th>
+                <th>{{ translate('report.diagnostics.status') }}</th>
+                <th>{{ translate('report.diagnostics.severity') }}</th>
+                <th>{{ translate('report.diagnostics.description') }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for code in summary.codes %}
+                <tr>
+                  <td>{{ code.code }}</td>
+                  <td>{{ code.status or '-' }}</td>
+                  <td>{{ code.severity_label }}</td>
+                  <td>{{ code.description }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>{{ translate('report.diagnostics.no_codes') }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </body>
+</html>

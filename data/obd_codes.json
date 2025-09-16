@@ -1,0 +1,46 @@
+{
+  "P0300": {
+    "severity": "high",
+    "description": {
+      "en": "Random/Multiple Cylinder Misfire Detected",
+      "es": "Fallo de encendido aleatorio o múltiple detectado"
+    },
+    "advice": {
+      "en": "Inspect ignition components and avoid extended driving until repaired.",
+      "es": "Inspeccione los componentes de encendido y evite conducir durante largos periodos hasta repararlo."
+    }
+  },
+  "P0420": {
+    "severity": "medium",
+    "description": {
+      "en": "Catalyst System Efficiency Below Threshold",
+      "es": "Eficiencia del sistema catalizador por debajo del umbral"
+    },
+    "advice": {
+      "en": "Check catalytic converter performance and related oxygen sensors.",
+      "es": "Revise el rendimiento del convertidor catalítico y los sensores de oxígeno relacionados."
+    }
+  },
+  "P0442": {
+    "severity": "low",
+    "description": {
+      "en": "Evaporative Emission Control System Leak Detected (small leak)",
+      "es": "Se detectó fuga pequeña en el sistema de emisiones evaporativas"
+    },
+    "advice": {
+      "en": "Inspect fuel cap seal and EVAP hoses for leaks.",
+      "es": "Inspeccione el sello del tapón de combustible y las mangueras EVAP en busca de fugas."
+    }
+  },
+  "P0171": {
+    "severity": "medium",
+    "description": {
+      "en": "System Too Lean (Bank 1)",
+      "es": "Sistema demasiado pobre (Banco 1)"
+    },
+    "advice": {
+      "en": "Check for vacuum leaks, intake restrictions, or failing MAF sensor.",
+      "es": "Verifique fugas de vacío, restricciones en la admisión o un sensor MAF defectuoso."
+    }
+  }
+}

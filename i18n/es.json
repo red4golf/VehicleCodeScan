@@ -1,0 +1,69 @@
+{
+  "upload": {
+    "title": "Cargador de informes de diagnóstico",
+    "heading": "Crear un informe de diagnóstico del vehículo",
+    "instructions": "Cargue el archivo del Foxwell NT650 Elite y las fotos opcionales del vehículo para generar un informe en PDF listo para el cliente.",
+    "labels": {
+      "scanner_file": "Archivo de la herramienta",
+      "images": "Fotos del vehículo (JPG)",
+      "email": "Correo electrónico del destinatario",
+      "language": "Idioma del informe",
+      "vin": "VIN del vehículo",
+      "mileage": "Kilometraje",
+      "notes": "Notas del técnico",
+      "submit": "Generar informe"
+    },
+    "errors": {
+      "missing_scanner": "Se requiere el archivo del escáner.",
+      "missing_email": "Se requiere una dirección de correo electrónico.",
+      "invalid_images": "Solo se admiten imágenes JPG ({filenames}).",
+      "parse_failed": "No se pudo analizar el archivo del escáner: {error}"
+    },
+    "success": {
+      "title": "Informe generado",
+      "message": "El informe {report_id} se creó correctamente.",
+      "email_sent": "Informe enviado a {email}.",
+      "email_not_sent": "Envío por correo omitido; verifique la configuración SMTP.",
+      "codes_heading": "Códigos de diagnóstico detectados"
+    }
+  },
+  "report": {
+    "title": "Informe de diagnóstico del vehículo",
+    "generated_on": "Generado el {timestamp}",
+    "vehicle": {
+      "heading": "Información del vehículo",
+      "vin": "VIN",
+      "mileage": "Kilometraje",
+      "notes": "Notas"
+    },
+    "diagnostics": {
+      "heading": "Resultados de diagnóstico",
+      "code": "Código",
+      "status": "Estado",
+      "severity": "Severidad",
+      "description": "Descripción",
+      "recommendation": "Recomendación",
+      "no_codes": "No se detectaron códigos de falla de diagnóstico."
+    },
+    "images": {
+      "heading": "Fotos del vehículo"
+    },
+    "disclaimer": {
+      "title": "Aviso legal",
+      "body": "Este informe se proporciona solo con fines informativos. Busque asistencia de un técnico certificado para las reparaciones necesarias."
+    },
+    "unknown_code_description": "No hay entrada en la base de datos para el código {code}.",
+    "unknown_code_advice": "Consulte a un técnico calificado para un diagnóstico adicional."
+  },
+  "severity": {
+    "low": "Baja",
+    "medium": "Media",
+    "high": "Alta",
+    "critical": "Crítica",
+    "unknown": "Desconocida"
+  },
+  "email": {
+    "subject": "Informe de diagnóstico del vehículo para {vin}",
+    "body": "Se adjunta el informe de diagnóstico de su vehículo.\n\nID de informe: {report_id}\nCódigos detectados: {codes}"
+  }
+}
