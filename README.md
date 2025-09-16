@@ -33,6 +33,14 @@ This project provides a small Flask-based web application for uploading Foxwell 
    python -m vehiclecodescan.cron.purge
    ```
 
+codex/create-vehicle-health-report-system-drdpm9
+## Static demo
+
+If you only need to preview the upload experience, open `demo/upload-demo.html` directly in a web browser. The page mirrors the
+Flask template, including validation styling and a sample success summary, without requiring any backend services.
+
+=======
+main
 ## Tests
 
 ```bash

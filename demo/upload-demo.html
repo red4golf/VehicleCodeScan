@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Vehicle Diagnostic Report Uploader</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; background: #f9fafc; color: #222; }
+      h1 { color: #0c2d57; }
+      form { background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+      label { display: block; margin-top: 1rem; font-weight: bold; }
+      input[type="text"], input[type="email"], input[type="file"], textarea, select {
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 0.3rem;
+        border: 1px solid #ccd6e0;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      textarea { min-height: 120px; }
+      button { margin-top: 1.5rem; background: #0c2d57; color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 4px; cursor: pointer; }
+      button:hover { background: #093060; }
+      .demo-note { background: #eef2ff; border: 1px solid #c7d2fe; padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; }
+      .errors { background: #ffe4e6; color: #b91c1c; border: 1px solid #fecaca; padding: 1rem; border-radius: 6px; }
+      .summary { background: #ecfdf5; border: 1px solid #a7f3d0; padding: 1.5rem; border-radius: 8px; }
+      table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+      th, td { border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; }
+      th { background: #0c2d57; color: #fff; }
+    </style>
+  </head>
+  <body>
+    <h1>Create a Vehicle Diagnostic Report</h1>
+    <p>Upload the Foxwell NT650 Elite export and optional vehicle photos to generate a customer-ready PDF report.</p>
+
+    <div class="demo-note">
+      <strong>Static preview:</strong> This HTML file recreates the upload experience without needing to run the Flask app. Try selecting files to see the styling, then scroll down for an example of the success summary.
+    </div>
+
+    <div class="errors">
+      <ul>
+        <li>Scanner file is required.</li>
+        <li>Only JPG images are supported (example.png).</li>
+      </ul>
+    </div>
+
+    <form>
+      <label for="scanner_file">Scanner export file</label>
+      <input id="scanner_file" name="scanner_file" type="file" required>
+
+      <label for="images">Vehicle photos (JPG)</label>
+      <input id="images" name="images" type="file" accept="image/jpeg" multiple>
+
+      <label for="email">Recipient email</label>
+      <input id="email" name="email" type="email" placeholder="customer@example.com" required>
+
+      <label for="language">Report language</label>
+      <select id="language" name="language">
+        <option value="en" selected>EN</option>
+        <option value="es">ES</option>
+      </select>
+
+      <label for="vin">Vehicle VIN</label>
+      <input id="vin" name="vin" type="text" placeholder="1HGBH41JXMN109186">
+
+      <label for="mileage">Mileage</label>
+      <input id="mileage" name="mileage" type="text" placeholder="82,450">
+
+      <label for="notes">Technician notes</label>
+      <textarea id="notes" name="notes" placeholder="Summary of vehicle condition, recommended actions, etc."></textarea>
+
+      <button type="submit">Generate report</button>
+    </form>
+
+    <div class="summary">
+      <h2>Report generated</h2>
+      <p>Report VCS-23001 created successfully.</p>
+      <p>Report emailed to demo@example.com.</p>
+      <p><strong>ID:</strong> VCS-23001</p>
+      <p><strong>Report language:</strong> EN</p>
+
+      <h3>Detected diagnostic codes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Status</th>
+            <th>Severity</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>P0300</td>
+            <td>Stored</td>
+            <td>High</td>
+            <td>Random/multiple cylinder misfire detected. Inspect ignition components and fuel delivery.</td>
+          </tr>
+          <tr>
+            <td>P0442</td>
+            <td>Pending</td>
+            <td>Medium</td>
+            <td>Evaporative emission system leak detected (small leak). Check gas cap seal and EVAP hoses.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>If email delivery is not configured, the Flask app will show a notice indicating that the PDF was generated but not sent.</p>
+    </div>
+  </body>
+</html>
